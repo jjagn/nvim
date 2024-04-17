@@ -1,0 +1,6 @@
+require("jjagn.after.telescope")
+require("jjagn.after.lsp")
+require("jjagn.after.undotree")
+require("jjagn.after.treesitter")
+require("jjagn.after.harpoon")
+require("jjagn.after.fugitive")
