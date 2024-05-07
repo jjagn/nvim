@@ -39,4 +39,12 @@ require("lazy").setup({
 {'L3MON4D3/LuaSnip'},
 { 'j-hui/fidget.nvim', opts = {} },
 { 'folke/neodev.nvim', opts = {} },
+{
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+},
+{
+    'numToStr/Comment.nvim',
+    lazy = false,
+}
 })

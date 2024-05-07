@@ -6,6 +6,13 @@ vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 
 require("mason").setup()
+require("lualine").setup(
+	{options = {
+		theme = 'gruvbox',
+		icons_enabled = false
+	}
+})
+require("Comment").setup()
 
 vim.opt.number = true
 vim.opt.relativenumber = true
