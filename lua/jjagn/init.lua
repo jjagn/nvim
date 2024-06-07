@@ -1,9 +1,11 @@
 require("jjagn.lazy")
 require("jjagn.remap")
 require("jjagn.after")
+require("jjagn.neovide")
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
+vim.o.guifont = "BerkeleyMono Nerd Font:h14"
 
 require("mason").setup()
 require("lualine").setup(
@@ -13,6 +15,12 @@ require("lualine").setup(
 	}
 })
 require("Comment").setup()
+
+vim.opt.guicursor = {
+  'n-v-c:block-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700',
+  'i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700',
+  'r:hor50-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700'
+}
 
 vim.opt.number = true
 vim.opt.relativenumber = true
