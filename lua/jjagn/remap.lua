@@ -26,4 +26,4 @@ vim.keymap.set("v",  "<leader>R", '"hy:s/<C-r>h//g<left><left>')
 
 vim.keymap.set("n", "<leader>gc", ":Git commit -m \"\"<left>", {noremap = true})
 vim.keymap.set("n", "<leader>ga", ":Git add .<CR>")
-vim.keymap.set("n", "<leader>gp", ":Git push")
+vim.keymap.set("n", "<leader>gp", ":Git push<CR>")
