@@ -17,3 +17,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.keymap.set("n", "<leader>r", ":%s/")
+vim.keymap.set("n", "<leader>R", ":s/")
+
+vim.keymap.set("v",  "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
+vim.keymap.set("v",  "<leader>R", '"hy:s/<C-r>h//g<left><left>')
+
+vim.keymap.set("n", "<leader>gc", ":Git commit -m \"\"<left>", {noremap = true})
+vim.keymap.set("n", "<leader>ga", ":Git add .<CR>")
+vim.keymap.set("n", "<leader>gp", ":Git push")
