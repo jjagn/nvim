@@ -7,6 +7,21 @@ vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
 vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
 vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
 
+-- allow moving lines using J and K when in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '>-2<CR>gv=gv")
+
+-- keep cursor in the same place when appending lines with J
+vim.keymap.set("n", "J", "mzJ'z")
+
+-- keep cursor in the middle of the screen when jumping up and down using ctrl D and ctrl U
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- keep search terms in the middle
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
 -- clear search highlight with esc
 vim.keymap.set("n", "<esc>", ":noh<cr>")
 
