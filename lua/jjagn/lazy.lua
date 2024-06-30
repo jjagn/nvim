@@ -22,6 +22,10 @@ require("lazy").setup({
   opts = {}
 },
 {
+  "christoomey/vim-tmux-navigator",
+  lazy = false,
+},
+{
 "nvim-telescope/telescope.nvim",
 	dependencies = { 'nvim-lua/plenary.nvim' }
 },
