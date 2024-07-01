@@ -7,19 +7,25 @@ vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 vim.o.guifont = "BerkeleyMono Nerd Font:h14"
 
+vim.o.tabstop = 4
+vim.o.expandtab = true
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
+
 require("mason").setup()
 require("lualine").setup(
-	{options = {
-		theme = 'gruvbox',
-		icons_enabled = false
-	}
-})
+    {
+        options = {
+            theme = 'gruvbox',
+            icons_enabled = false
+        }
+    })
 require("Comment").setup()
 
 vim.opt.guicursor = {
-  'n-v-c:block-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700',
-  'i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700',
-  'r:hor50-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700'
+    'n-v-c:block-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700',
+    'i-ci:ver25-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700',
+    'r:hor50-Cursor/lCursor-blinkwait100-blinkon700-blinkoff700'
 }
 
 vim.opt.number = true
