@@ -25,6 +25,9 @@ vim.keymap.set("n", "N", "Nzzzv")
 -- clear search highlight with esc
 vim.keymap.set("n", "<esc>", ":noh<cr>")
 
+-- change ctrl+w (delete preceding word) to option + backspace (default for mac)
+vim.keymap.set("i", "<M-BS>", "<C-W>")
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
