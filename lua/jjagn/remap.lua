@@ -41,3 +41,27 @@ vim.keymap.set("n", "<leader>R", ":s/")
 
 vim.keymap.set("v",  "<leader>r", '"hy:%s/<C-r>h//g<left><left>')
 vim.keymap.set("v",  "<leader>R", '"hy:s/<C-r>h//g<left><left>')
+
+-- Function to format Rust files using rustfmt
+local function format_rust_file()
+    if vim.bo.filetype == 'rust' then
+        local cursor_pos = vim.api.nvim_win_get_cursor(0)
+        vim.cmd('%!rustfmt')
+        vim.api.nvim_win_set_cursor(0, cursor_pos)
+        print('Rust file formatted with rustfmt')
+    else
+        print('Not a Rust file')
+    end
+end
+
+vim.keymap.set('n', '<leader>f', format_rust_file, {
+    noremap = true,  -- Prevent remapping
+    silent = true    -- Suppress command output messages
+})
+
+vim.api.nvim_create_autocmd('BufWritePre', {
+    pattern = '*.rs',  -- Apply only to Rust files
+    callback = function()
+        format_rust_file()
+    end
+})
