@@ -8,4 +8,5 @@ vim.keymap.set('n', '<leader>pc', builtin.command_history, { desc = 'Telescope c
 vim.keymap.set('n', '<leader>ps', builtin.current_buffer_fuzzy_find, { desc = 'Telescope fuzzy find in buffer'})
 vim.keymap.set('n', '<leader>vd', builtin.diagnostics, { desc = 'Telescope LSP diagnostics'})
 vim.keymap.set('n', '<leader>gl', builtin.git_commits, { desc = 'Telescope git commits'})
+vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status'})
 vim.keymap.set('n', '<leader>vr', builtin.lsp_references, { desc = 'Telescope LSP references'})
