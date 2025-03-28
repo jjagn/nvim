@@ -4,7 +4,8 @@ local wk = require("which-key")
 local function format_rust_file()
     if vim.bo.filetype == 'rust' then
         local cursor_pos = vim.api.nvim_win_get_cursor(0)
-        vim.cmd('%!rustfmt')
+        -- vim.cmd('%!rustfmt')
+        vim.api.nvim_input("<CR>")
         vim.api.nvim_win_set_cursor(0, cursor_pos)
     end
 end
@@ -79,6 +80,10 @@ vim.keymap.set("n", "<leader>R", ":s/", { desc = "Line-specific search and repla
 -- Visual mode search and replace using current visual selection
 vim.keymap.set("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', { desc = "Global search and replace with visual selection" })
 vim.keymap.set("v", "<leader>R", '"hy:s/<C-r>h//g<left><left>', { desc = "Line-specific search and replace with visual selection" })
+
+-- remap p for 
+vim.keymap.set("n", "p", '"0p')
+vim.keymap.set("n", "P", 'p')
 
 -- Manually format Rust file with <leader>f
 vim.keymap.set('n', '<leader>f', format_rust_file, {
