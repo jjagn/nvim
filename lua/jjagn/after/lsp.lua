@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd('lspattach', {
   vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, {buffer = bufnr, remap = false, desc = "show diagnostics"})
   vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, {buffer = bufnr, remap = false, desc = "next diagnostic"})
   vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, {buffer = bufnr, remap = false, desc = "previous diagnostic"})
-  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, {buffer = bufnr, remap = false, desc = "lsp code action"})
+  vim.keymap.set("n", "<leader>va", function() vim.lsp.buf.code_action() end, {buffer = bufnr, remap = false, desc = "lsp code action"})
   -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, {buffer = bufnr, remap = false, desc = "go to definiton"})
   vim.keymap.set("i", "<c-h>", function() vim.lsp.buf.signature_help() end, opts)
