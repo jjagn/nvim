@@ -6,9 +6,6 @@ local function format_rust_file()
         local cursor_pos = vim.api.nvim_win_get_cursor(0)
         vim.cmd('%!rustfmt')
         vim.api.nvim_win_set_cursor(0, cursor_pos)
-        print('Rust file formatted with rustfmt')
-    else
-        print('Not a Rust file')
     end
 end
 
