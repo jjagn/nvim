@@ -82,8 +82,7 @@ vim.keymap.set("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', { desc = "Globa
 vim.keymap.set("v", "<leader>R", '"hy:s/<C-r>h//g<left><left>', { desc = "Line-specific search and replace with visual selection" })
 
 -- remap p for 
-vim.keymap.set("n", "p", '"0p')
-vim.keymap.set("n", "P", 'p')
+vim.keymap.set("n", "P", '"0p')
 
 -- Manually format Rust file with <leader>f
 vim.keymap.set('n', '<leader>f', format_rust_file, {
