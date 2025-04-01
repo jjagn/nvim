@@ -1,6 +1,6 @@
 -- vim.keymap.set("n", "<leader>gs", vim.cmd.Git, {desc = "status"})
 vim.keymap.set("n", "<leader>gc", ":Git commit -m \"\"<left>", {noremap = true, desc = "commit"})
-vim.keymap.set("n", "<leader>ga", ":Git add %:p<CR>", {desc = "Git add current file"})
+vim.keymap.set("n", "<leader>ga", ":Gwrite<CR>", {desc = "Git add current file"})
 vim.keymap.set("n", "<leader>gp", ":Git push<CR>")
 vim.keymap.set("n", "<leader>gd", ":Git diff<CR>")
 vim.keymap.set("n", "<leader>gS", ":Git switch ")
