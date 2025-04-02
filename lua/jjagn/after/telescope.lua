@@ -17,3 +17,21 @@ vim.keymap.set('n', '<leader>vd', builtin.diagnostics, { desc = 'Telescope LSP d
 vim.keymap.set('n', '<leader>gl', builtin.git_commits, { desc = 'Telescope git commits'})
 vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status'})
 vim.keymap.set('n', '<leader>vr', builtin.lsp_references, { desc = 'Telescope LSP references'})
+
+
+local actions = require("telescope.actions")
+local open_with_trouble = require("trouble.sources.telescope").open
+
+-- Use this to add more results without clearing the trouble list
+local add_to_trouble = require("trouble.sources.telescope").add
+
+local telescope = require("telescope")
+
+telescope.setup({
+  defaults = {
+    mappings = {
+      i = { ["<c-t>"] = open_with_trouble },
+      n = { ["<c-t>"] = open_with_trouble },
+    },
+  },
+})
