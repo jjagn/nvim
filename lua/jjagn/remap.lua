@@ -1,16 +1,5 @@
 local wk = require("which-key")
 
--- Function to format Rust files using rustfmt
-local function format_rust_file()
-    if vim.bo.filetype == 'rust' then
-        local cursor_pos = vim.api.nvim_win_get_cursor(0)
-        vim.cmd('%!rustfmt')
-        vim.api.nvim_input("<CR>")
-        vim.api.nvim_win_set_cursor(0, cursor_pos)
-    end
-end
-
-
 -- Which-key groups and mappings
 wk.add({
     -- Project Navigation Group
@@ -26,7 +15,6 @@ wk.add({
     { "<leader>R", '"hy:s/<C-r>h//g<left><left>', desc = "Line-specific search and replace with visual selection", mode = "v" },
     -- Formatting Group
     { "<leader>f", group = "Format" },
-    { "<leader>f", format_rust_file, desc = "Format current Rust file" }
 })
 
 vim.g.mapleader = " "
@@ -82,20 +70,4 @@ vim.keymap.set("v", "<leader>r", '"hy:%s/<C-r>h//g<left><left>', { desc = "Globa
 vim.keymap.set("v", "<leader>R", '"hy:s/<C-r>h//g<left><left>', { desc = "Line-specific search and replace with visual selection" })
 
 -- remap p for 
-vim.keymap.set("n", "P", '"0p')
-
--- Manually format Rust file with <leader>f
-vim.keymap.set('n', '<leader>f', format_rust_file, {
-    noremap = true,
-    silent = true,
-    desc = "Format current Rust file"
-})
-
--- Automatically format Rust files on save
-vim.api.nvim_create_autocmd('BufWritePre', {
-    pattern = '*.rs',  -- Apply only to Rust files
-    callback = function()
-        format_rust_file()
-    end,
-    desc = "Auto-format Rust files on save"
-})
+vim.keymap.set("n", "P", '"*p')

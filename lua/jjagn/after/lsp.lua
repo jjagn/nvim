@@ -1,4 +1,5 @@
 local luasnip = require('luasnip')
+local trouble = require('trouble')
 
 local lspconfig_defaults = require('lspconfig').util.default_config
 lspconfig_defaults.capabilities = vim.tbl_deep_extend(
@@ -20,6 +21,7 @@ vim.api.nvim_create_autocmd('lspattach', {
   -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, {buffer = bufnr, remap = false, desc = "rename symbol"})
   vim.keymap.set("i", "<c-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.signature_help() end, {buffer = bufnr, remap = false, desc = "lsp signature help"})
   vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, {buffer = bufnr, remap = false, desc = "format buffer"})
 end})
 
@@ -92,3 +94,40 @@ cmp.setup({
   })
 
   -- lsp.setup()
+-- require('lspconfig.ui.windows').default_options.border = 'rounded'
+-- require('lspconfig.ui.windows').default_options.wrap = true
+-- require('lspconfig.ui.windows').default_options.max_width = 80
+
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '■', -- or any character you prefer
+    spacing = 4,
+    source = "always",
+    severity = nil,
+    format = function(diagnostic)
+      local message = diagnostic.message
+      local trim_len = 120  -- adjust this number for desired line length
+      if #message > trim_len then
+        return string.sub(message, 1, trim_len) .. "..."
+      end
+      return message
+    end,
+    -- This shows all diagnostics for a line, not just the most severe one
+    severity_sort = true,
+  },
+  float = {
+    source = "always",
+    border = "rounded",
+    header = "",
+    prefix = "",
+    wrap = true,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+})
+
+-- Map a key to show all diagnostics for current line in a floating window
+vim.keymap.set('n', '<leader>vl', function()
+  vim.diagnostic.open_float({ scope = "line", wrap = true })
+end, { desc = 'Show line diagnostics' })
