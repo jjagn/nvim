@@ -1,7 +1,6 @@
 require("jjagn.lazy")
 require("jjagn.remap")
 require("jjagn.after")
-require("jjagn.neovide")
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])

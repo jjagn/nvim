@@ -14,7 +14,7 @@ wk.add({
     { "<leader>r", '"hy:%s/<C-r>h//g<left><left>', desc = "Global search and replace with visual selection", mode = "v" },
     { "<leader>R", '"hy:s/<C-r>h//g<left><left>', desc = "Line-specific search and replace with visual selection", mode = "v" },
     -- Formatting Group
-    { "<leader>f", group = "Format" },
+    { "<leader>d", group = "Debug" },
 })
 
 vim.g.mapleader = " "

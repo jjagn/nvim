@@ -88,5 +88,6 @@ require("lazy").setup({
       desc = "Quickfix List (Trouble)",
     },
   },
-}
+},
+{ 'mfussenegger/nvim-dap' }
 })
