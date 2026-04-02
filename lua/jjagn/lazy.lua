@@ -31,7 +31,7 @@ require("lazy").setup({
 },
 { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release' },
 { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ...},
-{{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"}},
+{{"nvim-treesitter/nvim-treesitter", lazy = false, build = ":TSUpdate"}},
 "theprimeagen/harpoon",
 "mbbill/undotree",
 "tpope/vim-fugitive",
@@ -47,6 +47,12 @@ require("lazy").setup({
 {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
+},
+{
+  "sourcegraph/amp.nvim",
+  branch = "main",
+  lazy = false,
+  opts = { auto_start = true, log_level = "info" },
 },
 {
     'numToStr/Comment.nvim',
