@@ -4,4 +4,5 @@ vim.keymap.set("n", "<leader>ga", ":Gwrite<CR>", {desc = "Git add current file"}
 vim.keymap.set("n", "<leader>gp", ":Git push<CR>")
 vim.keymap.set("n", "<leader>gd", ":Git diff %<CR>")
 vim.keymap.set("n", "<leader>gS", ":Git switch ")
+vim.keymap.set("n", "<leader>gb", ":Git blame")
 -- vim.keymap.set("n", "<leader>gl", ":Git log<CR>")
