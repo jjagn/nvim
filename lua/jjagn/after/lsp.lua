@@ -1,12 +1,9 @@
 local luasnip = require('luasnip')
 local trouble = require('trouble')
 
-local lspconfig_defaults = require('lspconfig').util.default_config
-lspconfig_defaults.capabilities = vim.tbl_deep_extend(
-  'force',
-  lspconfig_defaults.capabilities,
-  require('cmp_nvim_lsp').default_capabilities()
-)
+vim.lsp.config('*', {
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+})
 vim.api.nvim_create_autocmd('lspattach', {
   desc = 'lsp actions',
   callback = function(event)
@@ -28,23 +25,18 @@ end})
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = { 'clangd' },
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
-  automatic_installation = true,
+  automatic_enable = true,
 })
 
-require('lspconfig').clangd.setup {
+vim.lsp.config('clangd', {
   cmd = {
     "/Users/jacksoncrawford/repos/llvm-project/build/bin/clangd",
     "--background-index",
     "--query-driver=/home/jacksoncrawford/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-gcc*,/home/jacksoncrawford/.platformio/packages/toolchain-xtensa-esp32/bin/xtensa-esp32-elf-g++*"
   },
   filetypes = { "c", "cpp" },
-  capabilities = lspconfig_defaults.capabilities,
-}
+})
+vim.lsp.enable('clangd')
 
 local cmp = require('cmp')
 
