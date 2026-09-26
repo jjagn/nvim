@@ -4,20 +4,13 @@ local wk = require("which-key")
 wk.add({
     -- Project Navigation Group
     { "<leader>p", group = "Project" },
-    { "<leader>pv", vim.cmd.Ex, desc = "Open file explorer" },
     -- Replace/Search Group
     { "<leader>r", group = "Replace" },
     { "<leader>g", group = "Git" },
     { "<leader>v", group = "LSP" },
-    { "<leader>r", ":%s/", desc = "Global search and replace", mode = "n" },
-    { "<leader>R", ":s/", desc = "Line-specific search and replace", mode = "n" },
-    { "<leader>r", '"hy:%s/<C-r>h//g<left><left>', desc = "Global search and replace with visual selection", mode = "v" },
-    { "<leader>R", '"hy:s/<C-r>h//g<left><left>', desc = "Line-specific search and replace with visual selection", mode = "v" },
     -- Formatting Group
     { "<leader>d", group = "Debug" },
 })
-
-vim.g.mapleader = " "
 
 -- Open file explorer (Netrw) in the current directory
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex, { desc = "Open file explorer" })
@@ -55,7 +48,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
-    vim.highlight.on_yank()
+    vim.hl.on_yank()
   end,
 })
 

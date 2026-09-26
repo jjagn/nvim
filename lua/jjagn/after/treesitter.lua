@@ -4,18 +4,8 @@ install_dir = vim.fn.stdpath('data') .. '/site'
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
 require('nvim-treesitter').install { "c", "lua", "vim", "vimdoc", "query", "rust", "python" }
 
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  -- sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- auto_install = true,
-
---   highlight = {
---     enable = true,
---
---     -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
---     -- Using this option may slow down your editor, and you may see some duplicate highlights.
---     -- Instead of true it can also be a list of languages
---     additional_vim_regex_highlighting = false,
---   },
--- }
+-- nvim-treesitter `main` doesn't enable highlighting itself
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'rust', 'python' },
+  callback = function() pcall(vim.treesitter.start) end,
+})
