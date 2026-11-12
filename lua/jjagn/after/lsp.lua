@@ -28,11 +28,15 @@ require('mason-lspconfig').setup({
   automatic_enable = true,
 })
 
+-- prefer a locally built clangd if present, otherwise fall back to mason's
+local home = vim.env.HOME
+local custom_clangd = home .. "/repos/llvm-project/build/bin/clangd"
+local pio = home .. "/.platformio/packages/toolchain-*/bin/"
 vim.lsp.config('clangd', {
   cmd = {
-    "/Users/jacksoncrawford/repos/llvm-project/build/bin/clangd",
+    vim.fn.executable(custom_clangd) == 1 and custom_clangd or "clangd",
     "--background-index",
-    "--query-driver=/Users/jacksoncrawford/.platformio/packages/toolchain-*/bin/*-gcc*,/Users/jacksoncrawford/.platformio/packages/toolchain-*/bin/*-g++*"
+    "--query-driver=" .. pio .. "*-gcc*," .. pio .. "*-g++*"
   },
   filetypes = { "c", "cpp" },
 })
